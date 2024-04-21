@@ -19,10 +19,17 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       -
-        name: Build and (not) push
+        name: Build and push - Web
         uses: docker/build-push-action@v5
         with:
           push: true
           file: project-1/web/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
+          tags: abalderasp/bootcamp-devops-project1-web:${{ github.sha:0:7 }}
+      -
+        name: Build and push - Api
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          file: project-1/api/Dockerfile
+          tags: abalderasp/bootcamp-devops-project1-api:${{ github.sha:0:7 }}
 
