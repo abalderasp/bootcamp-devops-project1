@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@abalderasp-patch-1
+    - uses: actions/checkout@v3
     - name: build and push to docker
       uses: docker/build-push-actions@v1
       with:
