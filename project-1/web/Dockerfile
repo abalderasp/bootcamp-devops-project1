@@ -2,7 +2,7 @@ FROM node:lts-alpine3.18
 
 WORKDIR /usr/src/app
 
-COPY package.json /app
+COPY project-1/web/package.json /app
 
 COPY . .
 
