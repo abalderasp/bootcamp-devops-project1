@@ -24,12 +24,12 @@ jobs:
         with:
           push: true
           file: project-1/web/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-web:${{ GITHUB_SHA_SHORT }}
+          tags: abalderasp/bootcamp-devops-project1-web:${{ steps.meta.outputs.tags }}
       -
         name: Build and push - Api
         uses: docker/build-push-action@v5
         with:
           push: true
           file: project-1/api/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-api:${{ GITHUB_SHA_SHORT }}
+          tags: abalderasp/bootcamp-devops-project1-api:${{ steps.meta.outputs.tags }}
 
