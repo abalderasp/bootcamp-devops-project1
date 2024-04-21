@@ -24,5 +24,5 @@ jobs:
         with:
           push: false
           file: project-1/web/Dockerfile
-          tags: bootcamp-devops-project1-web:$(date +%s)
+          tags: abalderasp/bootcamp-devops-project1-web:$(date +%s)
 
