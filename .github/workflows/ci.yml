@@ -6,14 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Build the Docker image
-      run: docker build . --file project-1/web/Dockerfile --tag bootcamp-devops-project1:$(date +%s)
-
-    - name: Build the Docker image - api
-      run: docker build . --file project-1/api/Dockerfile --tag bootcamp-devops-project1-api:$(date +%s)
-    
-    - name: Docker login
-      run: docker images ls
+    - uses: actions/checkout@testdocker
+    - name: build and push to docker
+      uses: docker/build-push-actions@v1
+      with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          respository: ${{ github.repository }}
+          file: project-1/web/Dockerfile
+          tags: bootcamp-devops-project1-web:${{ github.sha }}
 
