@@ -22,7 +22,7 @@ jobs:
         name: Build and (not) push
         uses: docker/build-push-action@v5
         with:
-          push: false
+          push: true
           file: project-1/web/Dockerfile
           tags: abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
 
