@@ -4,9 +4,6 @@ resources:
 - deployment.yaml
 - service.yaml
 images:
-- name: app-image
-  newName: abalderasp/bootcamp-devops-project1-web
-  newTag: 6997f018d0360e19032a2bd58bffb204040db942
 - name: web
   newName: abalderasp/bootcamp-devops-project1-web
   newTag: 7b08ee4f2c50aa057d18169ce804d4dd1654f1fe
