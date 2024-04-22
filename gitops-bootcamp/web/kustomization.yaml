@@ -3,4 +3,4 @@ kind: Kustomization
 images:
 - name: app-image
   newName: abalderasp/bootcamp-devops-project1-web
-  newTag: 7b87fd93fe056ac0b9d3d2cefdbe3f62813016ec
+  newTag: badc61d48bef3247c870e453f47103f0cac4e1d1
