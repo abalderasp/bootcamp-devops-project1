@@ -14,7 +14,7 @@ spec:
       containers:
         - name: web
           image: "abalderasp/bootcamp-devops-project1-web:latest"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 5173
               name: http
