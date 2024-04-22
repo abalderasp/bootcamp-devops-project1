@@ -55,7 +55,7 @@ jobs:
           git commit -am "feat: Update deployment image tag to ${{ github.sha }}"
           
       - name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@abalderasp-patch-1
         with:
           github_token: ${{ secrets.ACTIONS_SYSTEM_USER }}
         
