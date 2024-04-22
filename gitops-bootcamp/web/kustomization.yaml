@@ -7,3 +7,6 @@ images:
 - name: app-image
   newName: abalderasp/bootcamp-devops-project1-web
   newTag: 6997f018d0360e19032a2bd58bffb204040db942
+- name: web
+  newName: abalderasp/bootcamp-devops-project1-web
+  newTag: 36d8deb59cb793ab2e703c18ba1fa442b7cf8a7f
