@@ -38,17 +38,17 @@ jobs:
         with:
           token: ${{ secrets.ACTIONS_SYSTEM_USER }}
 
-      - name: "Update Deployment Image Tag - Web" # [3]
+      - name: "Update Deployment Image Tag - Web" 
         working-directory: "gitops-bootcamp/web/"
         run: |
           kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
           
-      - name: "Update Deployment Image Tag - Api" # [3]
+      - name: "Update Deployment Image Tag - Api" 
         working-directory: "gitops-bootcamp/api/"
         run: |
           kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
 
-      - name: "Push Updated Image Tag" # [4]
+      - name: "Push Updated Image Tag"
         run: |
           git config --global user.name "@abalderasp"
           git config --global user.email "abalderas@occ.com.mx"
