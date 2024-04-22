@@ -6,4 +6,4 @@ resources:
 images:
 - name: web
   newName: abalderasp/bootcamp-devops-project1-web
-  newTag: 59e30f1a5f6832e58f34f7d18f1b0c0f39e92179
+  newTag: 02206f561c8eaf53733e3fc7349f7304a56620fd
