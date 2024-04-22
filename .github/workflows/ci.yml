@@ -32,8 +32,7 @@ jobs:
           push: true
           file: project-1/api/Dockerfile
           tags: abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
-      - 
-        name: Install kustomize 
+          
       - uses: imranismail/setup-kustomize@v2
       - run: |
           ls -l
