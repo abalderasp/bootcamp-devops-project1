@@ -33,10 +33,10 @@ jobs:
           file: project-1/api/Dockerfile
           tags: abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
           
-      - name: "Git checkout"
-        uses: "actions/checkout@v2"
-        with:
-          token: ${{ secrets.ACTIONS_SYSTEM_USER }}
+     #- name: "Git checkout"
+     #   uses: "actions/checkout@v2"
+     #   with:
+     #     token: ${{ secrets.ACTIONS_SYSTEM_USER }}
 
       - name: "Update Deployment Image Tag - Web" 
         working-directory: "gitops-bootcamp/web/"
@@ -53,5 +53,9 @@ jobs:
           git config --global user.name "@abalderasp"
           git config --global user.email "abalderas@occ.com.mx"
           git commit -am "feat: Update deployment image tag to ${{ github.sha }}"
-          git push
+          
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.ACTIONS_SYSTEM_USER }}
         
