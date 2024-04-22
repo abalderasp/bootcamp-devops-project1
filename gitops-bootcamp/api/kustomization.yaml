@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: api
   newName: abalderasp/bootcamp-devops-project1-api
-  newTag: 63803b3c2bdffcdff52fc32eed978e0a381840f6
+  newTag: 8dafa80e9b91e39ada4a18dd5f980aea6f59e9bc
 - name: app-image
   newName: abalderasp/bootcamp-devops-project1-api
   newTag: 6997f018d0360e19032a2bd58bffb204040db942
