@@ -33,11 +33,18 @@ jobs:
           file: project-1/api/Dockerfile
           tags: abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
           
-      - uses: imranismail/setup-kustomize@v2
-      - run: |
-          ls -l
-          pwd
-          kustomize edit set image abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
-          git add .
-          git commit -m "Set `app` image tag to `${GITHUB_SHA_SHORT}`"
+      - name: "Git checkout"
+        uses: "actions/checkout@v2"
+
+      - name: "Update Deployment Image Tag" # [3]
+        working-directory: "gitops-bootcamp/web/"
+        run: |
+          kustomize edit set image app-image=abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
+
+      - name: "Push Updated Image Tag" # [4]
+        run: |
+          git config --global user.name "@gabalderasp"
+          git config --global user.email "abalderas@occ.com.mx"
+          git commit -am "feat: Update deployment image tag to ${{ github.sha }} [skip ci]"
+          git push
         
