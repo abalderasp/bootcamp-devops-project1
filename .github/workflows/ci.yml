@@ -6,12 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set outputs
-        id: vars
-        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
-      
-      - name: Check outputs
-        run: echo ${{ steps.vars.outputs.sha_short }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -30,14 +24,14 @@ jobs:
         with:
           push: true
           file: project-1/web/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-web:${{ steps.vars.outputs.sha_short }}
+          tags: abalderasp/bootcamp-devops-project1-web:${GITHUB_RUN_NUMBER}
       -
         name: Build and push - Api
         uses: docker/build-push-action@v5
         with:
           push: true
           file: project-1/api/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-api:${{ steps.vars.outputs.sha_short }}
+          tags: abalderasp/bootcamp-devops-project1-api:${GITHUB_RUN_NUMBER}
           
       - name: "Git checkout"
         uses: "actions/checkout@v2"
@@ -47,12 +41,12 @@ jobs:
       - name: "Update Deployment Image Tag - Web" 
         working-directory: "gitops-bootcamp/web/"
         run: |
-          kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ steps.vars.outputs.sha_short }}
+          kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${GITHUB_RUN_NUMBER}
           
       - name: "Update Deployment Image Tag - Api" 
         working-directory: "gitops-bootcamp/api/"
         run: |
-          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${{ steps.vars.outputs.sha_short }}
+          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${GITHUB_RUN_NUMBER}
 
       - name: "Push Updated Image Tag"
         run: |
