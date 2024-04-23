@@ -57,7 +57,7 @@ jobs:
       - name: Update Kubernetes resources - api
         run: |
           cd gitops-bootcamp/api/
-          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:$GITHUB_SHA_SHORT
+          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:$GITHUB_SHA
           cat kustomization.yaml
 
       - name: Commit files
