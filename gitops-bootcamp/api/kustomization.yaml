@@ -6,4 +6,4 @@ resources:
 images:
 - name: api
   newName: abalderasp/bootcamp-devops-project1-api
-  newTag: f927c3ad9839728da41c29b1bd2051f54852deb9
+  newTag: f3e41b6c6289fd10f0450078cc52195517d73b80
