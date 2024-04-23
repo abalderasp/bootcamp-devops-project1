@@ -7,4 +7,3 @@ images:
 - name: api
   newName: abalderasp/bootcamp-devops-project1-api
   newTag: latest
-
