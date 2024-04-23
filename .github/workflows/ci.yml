@@ -6,6 +6,7 @@ on:
       - 'gitops-bootcamp/**'
     paths:
       - 'project-1/**'
+      - '.github/**'
   workflow_dispatch:
   
 jobs:
