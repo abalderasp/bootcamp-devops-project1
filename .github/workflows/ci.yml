@@ -24,14 +24,14 @@ jobs:
         with:
           push: true
           file: project-1/web/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-web:latest
+          tags: abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
       -
         name: Build and push - Api
         uses: docker/build-push-action@v5
         with:
           push: true
           file: project-1/api/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-api:latest
+          tags: abalderasp/bootcamp-devops-project1-api:${#{ github.sha }}
           
       - name: "Git checkout"
         uses: "actions/checkout@v2"
@@ -41,12 +41,12 @@ jobs:
       - name: "Update Deployment Image Tag - Web" 
         working-directory: "gitops-bootcamp/web/"
         run: |
-          kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:latest
+          kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
           
       - name: "Update Deployment Image Tag - Api" 
         working-directory: "gitops-bootcamp/api/"
         run: |
-          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:latest
+          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
 
       - name: "Push Updated Image Tag"
         run: |
