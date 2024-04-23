@@ -2,6 +2,8 @@ name: Docker Image CI
 on:
   push:
     branches: [ "abalderasp-patch-1" ]
+    paths-ignore:
+      - 'gitops-bootcamp/'
   workflow_dispatch:
 jobs:
   build:
