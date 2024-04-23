@@ -6,6 +6,8 @@ COPY project-1/web/package.json /app
 
 COPY project-1/web/. .
 
+RUN ls -l
+
 RUN npm set progress=false && npm install
 
 ENV VITE_HOST=0.0.0.0
