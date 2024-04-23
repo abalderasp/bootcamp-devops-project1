@@ -42,6 +42,14 @@ jobs:
       - uses: imranismail/setup-kustomize@v2
       - run: |
           ls -l
+          cd gitops-bootcamp/web
+          kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${GITHUB_SHA_SHORT}
+          cd ..
+          cd app
+          kustomize edit set image app=abalderasp/bootcamp-devops-project1-app:${GITHUB_SHA_SHORT}
+          git add .
+          git commit -m "Set `app` image tag to `${GITHUB_SHA}`"
+          git push
           
 
       #- name: "Update Deployment Image Tag - Web" 
