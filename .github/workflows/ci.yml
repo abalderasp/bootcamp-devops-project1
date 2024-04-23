@@ -3,7 +3,9 @@ on:
   push:
     branches: [ "abalderasp-patch-1" ]
     paths-ignore:
-      - 'gitops-bootcamp/web/kustomization.yaml , gitops-bootcamp/api/kustomization.yaml'
+      - 'gitops-bootcamp/**'
+    paths:
+      - 'project-1/**'
   workflow_dispatch:
   
 jobs:
