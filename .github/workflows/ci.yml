@@ -6,6 +6,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      
+      - name: Check outputs
+        run: echo ${{ steps.vars.outputs.sha_short }}
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -24,47 +30,47 @@ jobs:
         with:
           push: true
           file: project-1/web/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
+          tags: abalderasp/bootcamp-devops-project1-web:${{ steps.vars.outputs.sha_short }}
       -
         name: Build and push - Api
         uses: docker/build-push-action@v5
         with:
           push: true
           file: project-1/api/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
+          tags: abalderasp/bootcamp-devops-project1-api:${{ steps.vars.outputs.sha_short }}
           
       - name: "Git checkout"
         uses: "actions/checkout@v2"
         with:
-          token: ${{ secrets.ACTIONS_SYSTEM_USER }}
+          token: ${{ secrets.ACTIONS_SYSTEM_USER #}}
      
      
-      - uses: imranismail/setup-kustomize@v2
-      - run: |
-          cd gitops-bootcamp/web
-          ls -l
+     # - uses: imranismail/setup-kustomize@v2
+     # - run: |
+     #     cd gitops-bootcamp/web
+     #     ls -l
+     #     kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ steps.vars.outputs.sha_short }}
+     #     git config --global user.name "abalderasp"
+     #     git config --global user.email "abalderas@occ.com.mx"
+     #     git add .
+     #     git commit -m "Set `app` image tag to `${GITHUB_SHA}`"
+     #     git push
+          
+
+      - name: "Update Deployment Image Tag - Web" 
+        working-directory: "gitops-bootcamp/web/"
+        run: |
           kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
+          
+      - name: "Update Deployment Image Tag - Api" 
+        working-directory: "gitops-bootcamp/api/"
+        run: |
+          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
+
+      - name: "Push Updated Image Tag"
+        run: |
           git config --global user.name "abalderasp"
           git config --global user.email "abalderas@occ.com.mx"
-          git add .
-          git commit -m "Set `app` image tag to `${GITHUB_SHA}`"
+          git commit -am "feat: Update deployment image tag to ${{ github.sha }}"
           git push
-          
-
-      #- name: "Update Deployment Image Tag - Web" 
-        #working-directory: "gitops-bootcamp/web/"
-        #run: |
-        #  kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
-          
-      #- name: "Update Deployment Image Tag - Api" 
-      #  working-directory: "gitops-bootcamp/api/"
-      #  run: |
-      #    kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
-
-      #- name: "Push Updated Image Tag"
-      #  run: |
-      #    git config --global user.name "abalderasp"
-      #    git config --global user.email "abalderas@occ.com.mx"
-      #    git commit -am "feat: Update deployment image tag to ${{ github.sha }}"
-      #    git push
         
