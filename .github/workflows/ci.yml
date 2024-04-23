@@ -2,8 +2,6 @@ name: CI - bootcamp-devops-project1
 on:
   push:
     branches: [ "abalderasp-patch-1" ]
-    paths-ignore:
-      - 'gitops-bootcamp/**'
     paths:
       - 'project-1/**'
       - '.github/**'
