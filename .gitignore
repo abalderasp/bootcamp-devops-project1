@@ -1,1 +1,3 @@
 /terraform-eks/.terraform
+/gitops-bootcamp/web/kustomization.yaml
+/gitops-bootcamp/api/kustomization.yaml
