@@ -50,7 +50,7 @@ jobs:
 
       - name: "Push Updated Image Tag"
         run: |
-          git config --global user.name "@abalderasp"
+          git config --global user.name "abalderasp"
           git config --global user.email "abalderas@occ.com.mx"
           git commit -am "feat: Update deployment image tag to ${{ github.sha }}"
           git push
