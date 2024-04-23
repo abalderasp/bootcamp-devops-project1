@@ -46,6 +46,8 @@ jobs:
           cd ..
           cd api
           kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:${GITHUB_SHA_SHORT}
+          git config --global user.name "abalderasp"
+          git config --global user.email "abalderas@occ.com.mx"
           git add .
           git commit -m "Set `app` image tag to `${GITHUB_SHA}`"
           git push
