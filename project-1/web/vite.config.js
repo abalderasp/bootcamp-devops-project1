@@ -14,7 +14,7 @@ export default defineConfig({
     },
     proxy: {
       '^/api': {
-        target: 'http://api-svc.api.svc.cluster.local:5000',
+        target: 'http://api-svc.api.svc.cluster.local:80',
         //target: 'http://api:5000',
         changeOrigin: true
       }
