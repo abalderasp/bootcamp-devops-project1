@@ -1,10 +1,11 @@
-name: Docker Image CI
+name: CI - bootcamp-devops-project1
 on:
   push:
     branches: [ "abalderasp-patch-1" ]
     paths-ignore:
-      - 'gitops-bootcamp/'
+      - 'gitops-bootcamp/web/kustomization.yaml , gitops-bootcamp/api/kustomization.yaml'
   workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest
