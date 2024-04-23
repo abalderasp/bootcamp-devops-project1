@@ -38,7 +38,7 @@ jobs:
         with:
           token: ${{ secrets.ACTIONS_SYSTEM_USER }}
      
-      - name: kustimize build 
+     
       - uses: imranismail/setup-kustomize@v2
       - run: |
           ls -l
