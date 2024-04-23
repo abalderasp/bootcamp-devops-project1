@@ -4,7 +4,7 @@ WORKDIR /usr/src/app
 
 COPY project-1/web/package.json /app
 
-COPY project-1/web/* .
+COPY project-1/web/. .
 
 RUN npm set progress=false && npm install
 
