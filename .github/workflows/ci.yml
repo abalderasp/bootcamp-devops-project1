@@ -31,7 +31,7 @@ jobs:
         with:
           push: true
           file: project-1/api/Dockerfile
-          tags: abalderasp/bootcamp-devops-project1-api:${#{ github.sha }}
+          tags: abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
           
       - name: "Git checkout"
         uses: "actions/checkout@v2"
