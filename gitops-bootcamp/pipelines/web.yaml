@@ -13,7 +13,7 @@ spec:
   source:
     path: gitops-bootcamp/web
     repoURL: https://github.com/abalderasp/bootcamp-devops-project1.git
-    targetRevision: abalderasp-patch-1
+    targetRevision: development
   syncPolicy:
     automated:
       prune: true
