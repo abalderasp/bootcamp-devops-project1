@@ -1,7 +1,7 @@
 name: CI - bootcamp-devops-project1 - web - dev
 on:
   push:
-    branches: [ "abalderasp-patch-1" ]
+    branches: [ "development" ]
     paths:
       - 'project-1/web/**'
   workflow_dispatch:
