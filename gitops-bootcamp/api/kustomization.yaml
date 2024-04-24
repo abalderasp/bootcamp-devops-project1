@@ -1,0 +1,9 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+images:
+- name: abalderasp/bootcamp-devops-project1-api
+  newName: abalderasp/bootcamp-devops-project1-api
+  newTag: 2d1f99c39578cf92163099295ef2c85166180d18

@@ -2,9 +2,11 @@ FROM node:lts-alpine3.18
 
 WORKDIR /usr/src/app
 
-COPY package.json /app
+COPY project-1/web/package.json /app
 
-COPY . .
+COPY project-1/web/. .
+
+RUN ls -l
 
 RUN npm set progress=false && npm install
 
