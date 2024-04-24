@@ -51,13 +51,13 @@ jobs:
       - name: Update Kubernetes resources - web
         run: |
           cd gitops-bootcamp/web/
-          kustomize edit set image web=abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
+          kustomize edit set image abalderasp/bootcamp-devops-project1-web=abalderasp/bootcamp-devops-project1-web:${{ github.sha }}
           cat kustomization.yaml
 
       - name: Update Kubernetes resources - api
         run: |
           cd gitops-bootcamp/api/
-          kustomize edit set image api=abalderasp/bootcamp-devops-project1-api:$GITHUB_SHA
+          kustomize edit set image abalderasp/bootcamp-devops-project1-api=abalderasp/bootcamp-devops-project1-api:${{ github.sha }}
           cat kustomization.yaml
 
       - name: Commit files
